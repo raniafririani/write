@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ruang tulis — writebyrani</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}body{font:16px/1.55 'Archivo',Arial,sans-serif;background:#f4f4f2;color:#121212}
+.top{background:#121212;color:#fff;padding:0 22px;height:54px;display:flex;align-items:center;gap:14px}.top b{font-weight:900;font-size:1.2rem}.top b i{font-style:normal;background:#C8102E;padding:0 6px}.top span{opacity:.7;font-size:.9rem;margin-left:auto}
+button,.btn{font:800 .92rem 'Archivo',sans-serif;border:2px solid #121212;background:#fff;color:#121212;padding:9px 16px;cursor:pointer;transition:.2s;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:#121212;color:#fff}.red{background:#C8102E;border-color:#C8102E;color:#fff}.red:hover{background:#9E0B22;border-color:#9E0B22}
+.card{background:#fff;border:1px solid #dcdcd8;padding:22px;max-width:480px;margin:50px auto}.card h1{font-size:1.5rem;font-weight:900;margin-bottom:10px}
+label{display:block;font-weight:800;font-size:.85rem;margin:14px 0 5px}input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:2px solid #cfcfca;background:#fff}input:focus,select:focus,textarea:focus{outline:none;border-color:#C8102E}textarea{resize:vertical;line-height:1.5}
+.wrap{display:grid;grid-template-columns:320px 1fr;gap:22px;padding:22px;max-width:1280px;margin:0 auto}@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.side{background:#fff;border:1px solid #dcdcd8;padding:16px;align-self:start}.side h2{font-size:1.05rem;font-weight:900;margin-bottom:10px}
+.row{padding:12px 0;border-top:1px solid #e6e6e2;cursor:pointer}.row:hover b{color:#C8102E}.row b{display:block;line-height:1.3;font-size:.95rem}.row small{color:#6b6b66}
+.pill{font-size:.7rem;font-weight:800;padding:2px 8px;margin-right:6px;background:#e6e6e2}.pill.pub{background:#C8102E;color:#fff}
+.edit{background:#fff;border:1px solid #dcdcd8;padding:22px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.two{grid-template-columns:1fr}}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid #e6e6e2;align-items:center}.acts .gap{margin-left:auto}
+#msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);padding:12px 22px;font-weight:800;color:#fff;z-index:9;box-shadow:0 10px 30px rgba(0,0,0,.3)}#msg.ok{background:#1b7a3d}#msg.err{background:#C8102E}
+.hint{font-size:.8rem;color:#6b6b66;font-weight:500}.warn{background:#fff4d6;border-left:5px solid #d9a200;padding:14px;margin-top:14px;font-size:.92rem}
+</style>
+</head>
+<body>
+<div class="top"><b>write<i>byrani</i></b> Ruang tulis<span id="who"></span><button id="out" hidden>Keluar</button></div>
+
+<section id="cfg" class="card" hidden><h1>Supabase belum diisi</h1><p>Buka file <b>admin.html</b>, lalu isi <b>SUPABASE_URL</b> dan <b>SUPABASE_KEY</b> (anon key) di bagian script paling atas. Lakukan hal yang sama di <b>index.html</b>.</p></section>
+
+<section id="login" class="card" hidden><h1>Masuk</h1><p class="hint">Halaman ini hanya untuk penulis.</p>
+<label for="em">Email</label><input id="em" type="email" autocomplete="username">
+<label for="pw">Kata sandi</label><input id="pw" type="password" autocomplete="current-password">
+<div class="acts" style="border:0;margin-top:16px;padding:0"><button class="red" id="go">Masuk</button></div></section>
+
+<div id="app" class="wrap" hidden>
+  <aside class="side"><button class="red" id="new" style="width:100%;margin-bottom:14px">+ Tulisan baru</button><h2>Semua tulisan</h2><div id="list"></div></aside>
+  <section class="edit">
+    <label for="title" style="margin-top:0">Judul</label><input id="title" placeholder="Judul berita">
+    <div class="two"><div><label for="cat">Kategori</label><select id="cat"><option>Berita</option><option>Feature</option><option>Opini</option><option>Sastra</option></select></div>
+    <div><label for="tag">Label (opsional)</label><input id="tag" placeholder="mis. Disusun dari berbagai sumber"></div></div>
+    <label for="slug">Alamat tulisan (otomatis dari judul)</label><input id="slug" placeholder="terisi otomatis">
+    <label for="dek">Ringkasan / dek</label><textarea id="dek" rows="3"></textarea>
+    <label for="body">Isi tulisan <span class="hint">· pisahkan paragraf dengan satu baris kosong</span></label><textarea id="body" rows="16"></textarea>
+    <label for="note">Catatan verifikasi</label><textarea id="note" rows="4"></textarea>
+    <label for="sources">Sumber <span class="hint">· satu per baris. Untuk tautan: Judul, Media, tanggal | https://alamat</span></label><textarea id="sources" rows="6"></textarea>
+    <div class="acts"><button id="draft">Simpan draf</button><button class="red" id="pub">Terbitkan</button><a id="view" class="btn" target="_blank" hidden>Lihat di situs</a><button class="gap" id="del" hidden>Hapus</button></div>
+    <div class="warn">Pastikan setiap angka ada sumbernya dan identitas anak serta korban tidak ditampilkan sebelum menekan Terbitkan.</div>
+  </section>
+</div>
+<div id="msg" hidden></div>
+
+<script>
+const SUPABASE_URL='https://bajofkexvlubvtiscien.supabase.co';
+const SUPABASE_KEY='sb_publishable_MAnPisE55-E14g5DKWTuHg_reOOBjX0';
+const $=s=>document.querySelector(s);
+const slugify=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,90);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let editId=null,curPub=null,S=null;
+try{S=JSON.parse(localStorage.getItem('wb_session')||'null')}catch(e){}
+const setS=s=>{S=s;try{s?localStorage.setItem('wb_session',JSON.stringify(s)):localStorage.removeItem('wb_session')}catch(e){}};
+function msg(t,ok){const m=$('#msg');m.textContent=t;m.className=ok?'ok':'err';m.hidden=false;clearTimeout(msg.t);msg.t=setTimeout(()=>m.hidden=true,4500)}
+function show(id){['cfg','login','app'].forEach(x=>$('#'+x).hidden=x!==id);$('#out').hidden=id!=='app'}
+async function auth(body,grant){const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type='+grant,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});
+ const j=await r.json();if(!r.ok)throw new Error(j.error_description||j.msg||'Gagal masuk');j.exp=Date.now()+(j.expires_in-60)*1000;setS(j);return j}
+async function api(path,o={}){
+ if(!S)throw new Error('Belum masuk');
+ if(Date.now()>S.exp){try{await auth({refresh_token:S.refresh_token},'refresh_token')}catch(e){setS(null);show('login');throw e}}
+ const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,{method:o.method||'GET',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+S.access_token,'Content-Type':'application/json',Prefer:'return=representation'},body:o.body?JSON.stringify(o.body):undefined});
+ const t=await r.text();let j=null;try{j=t?JSON.parse(t):null}catch(e){}
+ if(!r.ok){const e=new Error((j&&j.message)||('Error '+r.status));e.code=j&&j.code;throw e}return j}
+function blank(){editId=null;curPub=null;['title','tag','slug','dek','body','note','sources'].forEach(i=>$('#'+i).value='');$('#cat').value='Berita';$('#del').hidden=true;$('#view').hidden=true}
+async function list(){try{const data=await api('articles?select=id,slug,title,status,cat,published_at,updated_at&order=updated_at.desc');
+ $('#list').innerHTML=data.length?data.map(a=>`<div class="row" data-id="${a.id}"><b>${esc(a.title)}</b><small><span class="pill ${a.status==='published'?'pub':''}">${a.status==='published'?'Terbit':'Draf'}</span>${a.cat}</small></div>`).join(''):'<p class="hint">Belum ada tulisan.</p>'}catch(e){msg(e.message)}}
+function fill(data){editId=data.id;curPub=data.published_at;$('#title').value=data.title;$('#cat').value=data.cat;$('#tag').value=data.tag||'';$('#slug').value=data.slug;$('#dek').value=data.dek||'';
+ $('#body').value=(data.body||[]).join('\n\n');$('#note').value=data.note||'';$('#sources').value=(data.sources||[]).join('\n');$('#del').hidden=false;
+ const v=$('#view');v.hidden=data.status!=='published';v.href='index.html#/tulisan/'+data.slug}
+async function edit(id){try{const d=await api('articles?id=eq.'+id+'&select=*');fill(d[0]);scrollTo(0,0)}catch(e){msg(e.message)}}
+async function save(status){const title=$('#title').value.trim();if(!title)return msg('Judul wajib diisi');
+ const o={title,cat:$('#cat').value,tag:$('#tag').value.trim()||null,slug:$('#slug').value.trim()||slugify(title),dek:$('#dek').value.trim()||null,note:$('#note').value.trim()||null,
+  body:$('#body').value.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean),sources:$('#sources').value.split('\n').map(s=>s.trim()).filter(Boolean),status};
+ if(status==='published'&&!o.body.length)return msg('Isi tulisan masih kosong');
+ o.published_at=curPub||(status==='published'?new Date().toISOString():null);
+ try{const d=await api(editId?'articles?id=eq.'+editId:'articles',{method:editId?'PATCH':'POST',body:o});fill(d[0]);
+  msg(status==='published'?'Terbit! Tulisan sudah tayang di situs.':'Draf tersimpan.',1);list()}
+ catch(e){msg(e.code==='23505'?'Alamat tulisan sudah dipakai, ubah kolom alamat.':e.message)}}
+function enter(){if(S){$('#who').textContent=S.user&&S.user.email||'';show('app');list()}else show('login')}
+if(!SUPABASE_URL||!SUPABASE_KEY){show('cfg')}else{
+ enter();
+ $('#go').onclick=async()=>{try{await auth({email:$('#em').value.trim(),password:$('#pw').value},'password');enter()}catch(e){msg('Email atau kata sandi salah')}};
+ $('#pw').onkeydown=e=>{if(e.key==='Enter')$('#go').click()};
+ $('#out').onclick=()=>{setS(null);blank();show('login')};$('#new').onclick=blank;$('#draft').onclick=()=>save('draft');$('#pub').onclick=()=>save('published');
+ $('#list').onclick=e=>{const r=e.target.closest('.row');if(r)edit(r.dataset.id)};
+ $('#del').onclick=async()=>{if(!editId||!confirm('Hapus tulisan ini secara permanen?'))return;try{await api('articles?id=eq.'+editId,{method:'DELETE'});blank();list();msg('Tulisan dihapus.',1)}catch(e){msg(e.message)}};
+}
+</script>
+</body>
+</html>

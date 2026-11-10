@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>writebyrani — Berita, feature, opini, dan sastra dari Bogor</title>
+<meta name="description" content="writebyrani: tulisan jurnalistik Maulida Afririani. Berita, feature, opini, dan sastra dengan sumber yang bisa dicek.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C8102E;--red2:#9E0B22;--ink:#121212;--g1:#F4F4F2;--g2:#E2E2DE;--mute:#5E5E5A;--max:1180px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;color:var(--ink);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.sans{font-family:'Archivo','Helvetica Neue',Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:var(--red);color:#fff;padding:10px 16px;z-index:99}.skip:focus{left:0}
+.bar{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;z-index:100}
+
+.top{background:var(--ink);color:#d8d8d4;font:600 .8rem 'Archivo',sans-serif}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:36px}
+.top a{color:#fff}.top a:hover{color:#ff8d9d}
+.mast{padding:22px 0 18px;border-bottom:1px solid var(--g2)}
+.mast .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font:900 clamp(2.2rem,6vw,3.6rem)/1 'Archivo',sans-serif;letter-spacing:-.03em;display:inline-flex;align-items:stretch}
+.logo b{background:var(--red);color:#fff;padding:0 .18em .06em;margin-left:.04em;transform-origin:left;animation:grow .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{transform:scaleX(.2);opacity:0}}
+.tag{font:600 .95rem 'Archivo',sans-serif;color:var(--mute)}
+nav{background:var(--red);position:sticky;top:0;z-index:50;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{font:800 .88rem 'Archivo',sans-serif;color:#fff;padding:14px 16px;white-space:nowrap;position:relative;letter-spacing:.01em}
+nav a::after{content:'';position:absolute;left:16px;right:16px;bottom:8px;height:3px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover::after,nav a.on::after{transform:scaleX(1)}
+nav a.out{margin-left:auto;background:var(--red2)}nav a.out::after{display:none}
+.ticker{background:var(--g1);border-bottom:1px solid var(--g2);overflow:hidden}
+.ticker .wrap{display:flex;align-items:center;height:40px;gap:16px}
+.ticker .lbl{flex:none;background:var(--ink);color:#fff;font:800 .75rem 'Archivo',sans-serif;padding:5px 12px;display:flex;align-items:center;gap:8px;letter-spacing:.06em}
+.ticker .lbl i{width:8px;height:8px;border-radius:50%;background:#ff3b57;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+.ticker .run{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.ticker .run div{display:flex;gap:60px;width:max-content;font:600 .9rem 'Archivo',sans-serif;animation:tk 28s linear infinite;white-space:nowrap}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+main{min-height:60vh;animation:fade .5s both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.kick{font:800 .78rem 'Archivo',sans-serif;color:var(--red);text-transform:uppercase;letter-spacing:.08em}
+.kick span{color:var(--mute);margin-left:8px}
+.sec{padding:44px 0 8px}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sh h2{font:900 1.5rem 'Archivo',sans-serif;letter-spacing:-.01em;white-space:nowrap}
+.sh::before{content:'';width:8px;height:28px;background:var(--red)}
+.sh::after{content:'';flex:1;height:1px;background:var(--g2)}
+
+.lead{display:grid;grid-template-columns:1.6fr 1fr;gap:34px;padding:36px 0 10px}
+@media(max-width:860px){.lead{grid-template-columns:1fr}}
+.hero{background:var(--ink);color:#fff;padding:38px 34px 34px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:380px;transition:transform .3s}
+.hero::before{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:var(--red);opacity:.9;transition:transform .6s}
+.hero::after{content:'“';position:absolute;right:24px;top:-10px;font:900 11rem/1 'Archivo',sans-serif;color:rgba(255,255,255,.18)}
+.hero:hover::before{transform:scale(1.25)}
+.hero .kick{color:#ff8d9d;position:relative}.hero .kick span{color:#bdbdb8}
+.hero h1{font:900 clamp(1.8rem,3.6vw,2.7rem)/1.12 'Archivo',sans-serif;margin:12px 0;position:relative;letter-spacing:-.015em}
+.hero p{color:#d8d8d4;position:relative;max-width:60ch}
+.hero .more{margin-top:18px;font:800 .9rem 'Archivo',sans-serif;color:#fff;position:relative;display:inline-flex;gap:8px;align-items:center}
+.hero .more::after{content:'→';transition:transform .3s}.hero:hover .more::after{transform:translateX(6px)}
+.side{display:flex;flex-direction:column;gap:0}
+.side>h3{font:900 1.05rem 'Archivo',sans-serif;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-bottom:6px}
+.item{display:block;padding:16px 0;border-bottom:1px solid var(--g2)}
+.item h3,.item h4{font:800 1.15rem/1.3 'Archivo',sans-serif;margin:4px 0 4px;background:linear-gradient(var(--red),var(--red)) 0 100%/0 2px no-repeat;transition:background-size .35s;display:inline}
+.item:hover h3,.item:hover h4{background-size:100% 2px}
+.item p{font-size:.95rem;color:var(--mute);margin-top:6px}
+.empty{padding:18px;background:var(--g1);color:var(--mute);font:600 .92rem 'Archivo',sans-serif;border-left:4px solid var(--g2)}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{border:1px solid var(--g2);padding:22px 20px;display:flex;flex-direction:column;gap:8px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;background:#fff}
+.cat::before{content:'';position:absolute;left:0;top:0;height:4px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.cat:hover{transform:translateY(-4px);box-shadow:0 16px 28px -18px rgba(0,0,0,.4);border-color:var(--ink)}.cat:hover::before{transform:scaleX(1)}
+.cat h3{font:900 1.5rem 'Archivo',sans-serif}.cat p{font-size:.95rem;color:var(--mute);flex:1}.cat small{font:800 .8rem 'Archivo',sans-serif;color:var(--red)}
+
+.code{background:var(--g1);border-top:4px solid var(--red);padding:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px}
+.code div b{font:900 1.15rem 'Archivo',sans-serif;display:block;margin-bottom:6px}.code div span{font-size:.97rem;color:#3a3a37}
+.code .n{font:900 2.4rem/1 'Archivo',sans-serif;color:var(--red);display:block;margin-bottom:8px}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{font:800 .85rem 'Archivo',sans-serif;border:2px solid var(--ink);background:#fff;padding:7px 16px;cursor:pointer;transition:.2s}
+.chip[aria-pressed=true],.chip:hover{background:var(--ink);color:#fff}
+.page-h{padding:40px 0 6px}.page-h h1{font:900 clamp(2rem,5vw,3.2rem)/1.05 'Archivo',sans-serif;letter-spacing:-.02em}.page-h p{color:var(--mute);margin-top:8px;max-width:60ch}
+
+.art{max-width:760px;margin:0 auto;padding:40px 22px 30px}
+.art h1{font:900 clamp(1.9rem,4.6vw,2.9rem)/1.12 'Archivo',sans-serif;letter-spacing:-.02em;margin:12px 0 14px}
+.dek{font-size:1.25rem;color:#3a3a37;line-height:1.55;font-style:italic}
+.by{display:flex;gap:14px;align-items:center;margin:24px 0;padding:14px 0;border-block:1px solid var(--g2);font:600 .9rem 'Archivo',sans-serif;color:var(--mute);flex-wrap:wrap}
+.by b{color:var(--ink)}
+.art p{font-size:1.14rem;margin-bottom:1.1em}
+.note{background:var(--g1);border-left:5px solid var(--red);padding:18px 20px;margin:26px 0;font-size:1rem}.note b{font:800 .85rem 'Archivo',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--red);display:block;margin-bottom:4px}
+.src{margin-top:30px;padding-top:18px;border-top:3px solid var(--ink)}.src h3{font:900 1rem 'Archivo',sans-serif;margin-bottom:8px}.src li{font-size:.95rem;margin-left:20px;margin-bottom:4px}
+.back{display:inline-block;font:800 .9rem 'Archivo',sans-serif;color:var(--red);margin-top:26px}.back:hover{text-decoration:underline}
+
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding:20px 0 20px}@media(max-width:860px){.about{grid-template-columns:1fr}}
+.about p{font-size:1.1rem;margin-bottom:1em}
+.box{border:2px solid var(--ink);padding:24px}.box h3{font:900 1.1rem 'Archivo',sans-serif;margin-bottom:12px}.box a{display:block;padding:10px 0;border-bottom:1px solid var(--g2);font:700 .95rem 'Archivo',sans-serif;transition:.2s}.box a:hover{color:var(--red);padding-left:8px}.box a:last-child{border:0}
+
+footer{background:var(--ink);color:#bdbdb8;margin-top:60px;padding:34px 0;font:500 .9rem 'Archivo',sans-serif}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer b{color:#fff;font-weight:900;font-size:1.1rem}footer a{color:#fff}footer a:hover{color:#ff8d9d}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke konten</a>
+<div class="bar" id="bar"></div>
+<div class="top"><div class="wrap"><span id="tgl"></span><a href="https://portofolio-eight-woad-93.vercel.app/">Portofolio developer ↗</a></div></div>
+<header class="mast"><div class="wrap">
+  <a class="logo" href="#/" aria-label="writebyrani, beranda">write<b>byrani</b></a>
+  <p class="tag">Berita, feature, opini, dan sastra dari Bogor</p>
+</div></header>
+<nav aria-label="Menu utama"><div class="wrap" id="nav"></div></nav>
+<div class="ticker"><div class="wrap"><span class="lbl"><i></i>TERBARU</span><div class="run"><div id="run"></div></div></div></div>
+<main id="isi" tabindex="-1"></main>
+<noscript><div style="max-width:700px;margin:40px auto;padding:0 22px;font-family:sans-serif">Situs ini memerlukan JavaScript. Aktifkan JavaScript di browser untuk membaca tulisan.</div></noscript>
+<footer><div class="wrap">
+  <div><b>writebyrani</b><br>Ditulis oleh Maulida Afririani, Bogor.</div>
+  <div>© 2026 · <a href="https://portofolio-eight-woad-93.vercel.app/">Portofolio developer</a> · <a href="https://instagram.com/ahnranii" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+
+<script>
+/* ===== ISI SITUS: tambah tulisan baru di sini =====
+   cat: Berita | Feature | Opini | Sastra
+   body: array paragraf. sources: array sumber (boleh berisi tautan HTML). */
+const SB_URL='https://bajofkexvlubvtiscien.supabase.co';   // isi: Project URL dari Supabase
+const SB_KEY='sb_publishable_MAnPisE55-E14g5DKWTuHg_reOOBjX0';   // isi: anon public key (BUKAN service_role)
+const FALLBACK=[{"slug": "nenek-diduga-curi-sembako-diarak-warga-bogor", "cat": "Berita", "tag": "Disusun dari berbagai sumber", "title": "Nenek di Bogor Diduga Mencuri Sembako, Diarak Warga hingga Jilbab dan Bajunya Dirobek", "dek": "Polisi menyayangkan tindakan warga di Pasar Sabtu, Cibungbulang, dan menelusuri kondisi keluarga perempuan lanjut usia berinisial RU. Data usia dan kronologi berbeda antar sumber.", "note": "Status per 9 November 2026. RU hanya diberitakan sebagai pihak yang diduga mengambil barang, dan warga yang bertindak belum dinyatakan bersalah. Usia RU ditulis 60 tahun oleh tvOnenews dan detikNews, tetapi 70 tahun oleh Bogor Today, JurnalPatrolinews, dan FBINews. Nama lengkapnya juga tidak seragam antar media, jadi tulisan ini memakai inisial RU. Alat yang dipakai (pisau atau cutter), kecamatan lokasi (Cibungbulang atau Pamijahan), dan penyebab sakit suaminya (prostat atau komplikasi) berbeda antar sumber. Tribun Depok melaporkan RU sempat dibawa ke kantor polisi lalu dilepas, sedangkan Kapolsek menyatakan peristiwa tidak dilaporkan. Perbedaan ini belum terkonfirmasi.", "body": ["Seorang perempuan lanjut usia berinisial RU diduga mengambil sejumlah barang dagangan di Pasar Sabtu, Desa Situ Udik, Kecamatan Cibungbulang, Kabupaten Bogor, Jawa Barat. Ia kemudian diarak dan dikerumuni warga, dan dalam video yang beredar jilbab serta pakaiannya dirobek. Kejadian itu berlangsung pada Sabtu, 31 Oktober 2026, dan baru ramai setelah videonya viral di media sosial pada awal November.", "Kapolsek Cibungbulang Kompol Suyoko menyebut peristiwa terjadi sekitar pukul 07.30 WIB. Waktu itu ia peroleh dari pengelola pasar dan Ketua RW 03 Desa Situ Udik, seperti dikutip detikNews. Sebagian media menulis lokasinya di Kecamatan Pamijahan, sementara keterangan polisi dan pemberitaan lain menyebut Cibungbulang.", "Dalam rekaman yang diulas detikNews, RU digiring keluar dari area pasar dan ditanyai sejumlah pria. Seorang pria terlihat melepas jilbabnya dan memotong bagian atas bajunya dengan pisau. tvOnenews dan REQNews menyebut alat yang dipakai adalah cutter. Kedua media itu juga melaporkan bagian bahu RU sempat terlihat, dan tvOnenews menambahkan bahwa ia sempat didorong saat diarak. Menurut Radar Bogor, keadaan mereda setelah pengelola pasar melerai kerumunan.", "Menurut Kapolsek, barang yang diduga diambil RU meliputi delapan kemasan minyak goreng, mi instan, tempe, bawang putih, cabai, bakso, sabun deterjen, sabun batang, dan sandal milik seorang pedagang. Daftar barang di media lain lebih ringkas dan tidak seragam.", "Suyoko mengatakan peristiwa itu tidak dilaporkan ke kepolisian dan barang-barang tersebut sudah dikembalikan kepada pemiliknya. Ia menyayangkan warga tidak menghubungi polisi saat kejadian. Perbuatan itu, katanya, melanggar hukum, tetapi sisi kemanusiaan tetap harus dipertimbangkan. Liputan6 melaporkan polisi juga menyayangkan tindakan persekusi terhadap RU.", "Soal alasannya, tvOnenews melaporkan, dengan merujuk Polsek Cibungbulang, bahwa RU mengaku mengambil barang karena kesulitan ekonomi, sementara suaminya sakit sekitar empat tahun. Bogor Today menambahkan bahwa keluarga itu menanggung utang puluhan juta rupiah. Radar Bogor melaporkan penelusuran awal polisi menemukan keluarga RU menghadapi kesulitan ekonomi dan masalah kesehatan.", "Pada Minggu, 8 November 2026 sore, petugas Polsek Cibungbulang mendatangi rumah RU di Kelurahan Batutulis, Kecamatan Bogor Selatan, Kota Bogor. Menurut Bogor Today, kedatangan itu untuk meminta keterangan dan memastikan kondisinya setelah video tersebar. FBINews menulis polisi datang bersama Dinas Sosial, tetapi keterangan ini belum ditemukan di sumber lain.", "Hingga tulisan ini disusun, JurnalPatrolinews menyebut belum ada keterangan resmi tentang proses hukum terhadap warga yang mempermalukan RU. Kapolsek menyatakan penyelidikan dapat langsung dilakukan bila ada laporan."], "sources": ["Viral Nenek di Bogor Bajunya Disobek-sobek Warga karena Mencuri di Pasar, detikNews, 8 November 2026. | https://news.detik.com/berita/d-8743995/viral-nenek-di-bogor-bajunya-disobek-sobek-warga-karena-mencuri-di-pasar", "Terlilit Utang, Nenek 70 Tahun Dituduh Curi Sembako di Bogor, Bogor Today, 9 November 2026. | https://bogor-today.com/2026/11/09/terlilit-utang-nenek-70-tahun-dituduh-curi-sembako-di-bogor/", "Seorang Nenek Viral Dianiaya di Cibungbulang Bogor, Polisi Ungkap Kondisi Keluarganya, Radar Bogor, 8 November 2026. | https://radarbogor.jawapos.com/kabupaten-bogor/2611080065/seorang-nenek-viral-dianiaya-di-cibungbulang-bogor-polisi-ungkap-kondisi-keluarganya", "Viral Nenek di Bogor Diarak Warga setelah Diduga Curi Mie Instan hingga Minyak Goreng, tvOnenews, 8 November 2026. | https://www.tvonenews.com/berita/477197-viral-nenek-di-bogor-diarak-warga-setelah-diduga-curi-mie-instan-hingga-minyak-goreng-demi-kebutuhan-hidup", "Polsek Cibungbulang Ungkap Motif Nenek Viral Gasak Sembako di Pasar Saptu Bogor, tvOnenews. | https://www.tvonenews.com/berita/477320-polsek-cibungbulang-ungkap-motif-nenek-viral-gasak-sembako-di-pasar-saptu-bogor-suami-sakit-prostat-4-tahun", "Viral Nenek Beruban Diarak Warga di Bogor, Jilbab Disayat Cutter dan Bajunya Dirobek, REQNews, 8 November 2026. | https://www.reqnews.com/read/news/100351/viral-nenek-beruban-diarak-warga-di-bogor-jilbab-disayat-cutter-dan-bajunya-dirobek", "Terungkap Alasan Nenek Nekat Curi Sembako di Pasar Saptu Bogor, Liputan6, 8 November 2026. | https://www.liputan6.com/news/read/8331068/terungkap-alasan-nenek-nekat-curi-sembako-di-pasar-saptu-bogor", "Seorang Nenek di Bogor Nyaris Ditelanjangi Karena Mencuri Sembako, Tribun Depok. | https://depok.tribunnews.com/news/53373/seorang-nenek-di-bogor-nyaris-ditelanjangi-karena-mencuri-sembako", "Dituduh Mencuri Sembako, Nenek 70 Tahun Dipermalukan di Bogor, Polisi Turun Tangan, JurnalPatrolinews. | https://jurnalpatrolinews.co.id/headline/dituduh-mencuri-sembako-nenek-70-tahun-dipermalukan-di-bogor-polisi-turun-tangan/", "Terungkap! Nenek 70 Tahun Curi Sembako di Bogor karena Suami Sakit Menahun, FBINews. | https://www.fbinews.net/2026/11/terungkap-nenek-70-tahun-curi-sembako.html"], "published_at": "2026-11-09T08:00:00+07:00"}];
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MON=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const fmt=d=>{const x=new Date(d);return x.getDate()+' '+MON[x.getMonth()]+' '+x.getFullYear()};
+const srcHtml=l=>{const i=l.lastIndexOf(' | ');if(i>0&&/^https?:\/\//.test(l.slice(i+3).trim()))return '<a href="'+esc(l.slice(i+3).trim())+'" target="_blank" rel="noopener">'+esc(l.slice(0,i))+'</a>';return esc(l)};
+const norm=r=>({id:r.slug,cat:r.cat,tag:esc(r.tag),t:r.title,title:esc(r.title),dek:esc(r.dek),note:esc(r.note),body:(r.body||[]).map(esc),sources:(r.sources||[]).map(srcHtml),date:fmt(r.published_at)});
+async function load(){if(!SB_URL||!SB_KEY)return FALLBACK.map(norm);
+ const r=await fetch(SB_URL+'/rest/v1/articles?status=eq.published&order=published_at.desc&select=slug,cat,tag,title,dek,note,body,sources,published_at',{headers:{apikey:SB_KEY}});
+ if(!r.ok)throw new Error(r.status);return (await r.json()).map(norm)}
+let ARTICLES=[],LOADERR=false;
+const CATS=[['Berita','Peristiwa dilaporkan lugas, ringkas, dan bersumber.'],['Feature','Cerita yang lebih panjang dan naratif, dengan data di baliknya.'],['Opini','Sudut pandang saya, ditandai jelas sebagai opini.'],['Sastra','Puisi, cerpen, dan tulisan sastra lain.']];
+const CODE=[['Setiap angka ada sumbernya','Data dan kutipan dicantumkan sumbernya di akhir tulisan. Bila sumber saling berbeda, perbedaannya saya catat, bukan disembunyikan.'],['Dugaan tetap dugaan','Saya memegang asas praduga tak bersalah. Pihak yang diberitakan tidak saya nyatakan bersalah sebelum ada putusan pengadilan.'],['Anak dan korban dilindungi','Identitas anak dan korban kekerasan tidak saya tampilkan, sesuai prinsip pemberitaan yang ramah anak.']];
+const NAV=[['#/','Beranda'],['#/arsip','Arsip'],['#/arsip/Berita','Berita'],['#/arsip/Feature','Feature'],['#/arsip/Opini','Opini'],['#/arsip/Sastra','Sastra'],['#/tentang','Tentang']];
+const $=s=>document.querySelector(s),main=$('#isi');
+const row=a=>`<a class="item" href="#/tulisan/${a.id}"><div class="kick">${a.cat}<span>${a.tag?a.tag+' · ':''}${a.date}</span></div><h3>${a.title}</h3><p>${a.dek}</p></a>`;
+const count=c=>ARTICLES.filter(a=>a.cat===c).length;
+const codeBox=()=>`<div class="code">${CODE.map((c,i)=>`<div><span class="n">0${i+1}</span><b>${c[0]}</b><span>${c[1]}</span></div>`).join('')}</div>`;
+function home(){const a=ARTICLES[0];if(!a)return `<div class="wrap"><div class="page-h"><h1>${LOADERR?'Tulisan belum bisa dimuat':'Belum ada tulisan'}</h1><p>${LOADERR?'Coba muat ulang halaman beberapa saat lagi.':'Tulisan pertama akan segera terbit.'}</p></div></div>`;
+ return `<div class="wrap"><section class="lead"><a class="hero" href="#/tulisan/${a.id}"><div class="kick">${a.cat}<span>${a.tag} · ${a.date}</span></div><h1>${a.title}</h1><p>${a.dek}</p><span class="more">Baca selengkapnya</span></a>
+ <div class="side"><h3>Tulisan terbaru</h3>${ARTICLES.map(row).join('')}<div class="empty" style="margin-top:16px">Tulisan baru akan terbit di sini. Pantau terus ya.</div></div></section>
+ <section class="sec"><div class="sh"><h2>Jenis tulisan</h2></div><div class="cats">${CATS.map(c=>`<a class="cat" href="#/arsip/${c[0]}"><h3>${c[0]}</h3><p>${c[1]}</p><small>${count(c[0])?count(c[0])+' tulisan':'Segera hadir'} →</small></a>`).join('')}</div></section>
+ <section class="sec"><div class="sh"><h2>Cara saya menulis</h2></div>${codeBox()}</section></div>`}
+function arsip(f){const L=f?ARTICLES.filter(a=>a.cat===f):ARTICLES;
+ return `<div class="wrap"><div class="page-h"><h1>${f||'Arsip'}</h1><p>${f?CATS.find(c=>c[0]===f)[1]:'Semua tulisan, dari yang terbaru.'}</p></div>
+ <div class="chips" style="margin-top:22px">${[['','Semua'],...CATS.map(c=>[c[0],c[0]])].map(c=>`<a class="chip" aria-pressed="${(f||'')===c[0]}" href="#/arsip${c[0]?'/'+c[0]:''}">${c[1]}</a>`).join('')}</div>
+ <div>${L.length?L.map(row).join(''):'<div class="empty" style="margin-top:20px">Belum ada tulisan di kategori ini. Segera hadir.</div>'}</div></div>`}
+function artikel(id){const a=ARTICLES.find(x=>x.id===id);if(!a)return notfound();document.title=a.t+' — writebyrani';
+ return `<article class="art"><div class="kick">${a.cat}<span>${a.tag?a.tag:''}</span></div><h1>${a.title}</h1><p class="dek">${a.dek}</p>
+ <div class="by"><span>Oleh <b>Maulida Afririani</b></span><span>Bogor</span><span>${a.date}</span></div>
+ ${a.body.length?a.body.map(p=>`<p>${p}</p>`).join(''):'<p>Naskah lengkap tulisan ini sedang dirapikan dan akan segera tayang di sini.</p>'}
+ <div class="note"><b>Catatan verifikasi</b>${a.note}</div>
+ ${a.sources.length?`<div class="src"><h3>Sumber</h3><ol>${a.sources.map(s=>`<li>${s}</li>`).join('')}</ol></div>`:''}
+ <a class="back" href="#/arsip">← Kembali ke arsip</a></article>`}
+function tentang(){return `<div class="wrap"><div class="page-h"><h1>Tentang penulis</h1></div><div class="about"><div>
+ <p><b>Maulida Afririani</b> menulis berita, feature, opini, dan karya sastra dari Bogor. Situs ini adalah tempat saya mengumpulkan tulisan dan menunjukkan cara kerjanya: setiap data ada sumbernya, dan perbedaan antar sumber dicatat.</p>
+ <p>Di luar menulis, saya membangun website dan dashboard lewat studio web runbyrani, dan bekerja di bidang data dan operasional. Cerita lengkapnya ada di portofolio developer saya.</p>
+ <p><a class="back" style="margin:0" href="https://portofolio-eight-woad-93.vercel.app/">Lihat portofolio developer →</a></p></div>
+ <div class="box"><h3>Hubungi saya</h3><a href="mailto:raaniafririanii@gmail.com">raaniafririanii@gmail.com</a><a href="https://www.linkedin.com/in/maulidaafririani" target="_blank" rel="noopener">LinkedIn</a><a href="https://instagram.com/ahnranii" target="_blank" rel="noopener">Instagram @ahnranii</a></div></div>
+ <section class="sec"><div class="sh"><h2>Cara saya menulis</h2></div>${codeBox()}</section></div>`}
+function notfound(){return `<div class="wrap"><div class="page-h"><h1>Halaman tidak ditemukan</h1><p><a class="back" href="#/">← Ke beranda</a></p></div></div>`}
+function route(){const p=(location.hash.slice(1)||'/').split('/').filter(Boolean);document.title='writebyrani — Berita, feature, opini, dan sastra dari Bogor';
+ let h;if(!p.length)h=home();else if(p[0]==='arsip')h=arsip(decodeURIComponent(p[1]||''));else if(p[0]==='tulisan')h=artikel(p[1]);else if(p[0]==='tentang')h=tentang();else h=notfound();
+ main.style.animation='none';void main.offsetWidth;main.style.animation='';main.innerHTML=h;scrollTo(0,0);
+ const k='#/'+(p[0]||'')+(p[0]==='arsip'&&p[1]?'/'+p[1]:'');document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')===k||(p[0]==='tulisan'&&a.getAttribute('href')==='#/arsip/'+(ARTICLES.find(x=>x.id===p[1])||{}).cat)))}
+$('#nav').innerHTML=NAV.map(n=>`<a href="${n[0]}">${n[1]}</a>`).join('')+'<a class="out" href="https://portofolio-eight-woad-93.vercel.app/">Portofolio developer ↗</a>';
+function setTicker(){const t=ARTICLES.map(a=>a.title).concat(['Tulisan baru segera hadir']);$('#run').innerHTML=[...t,...t,...t,...t].map(x=>`<span>${x}</span>`).join('')}
+$('#tgl').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+addEventListener('hashchange',route);main.innerHTML='<div class="wrap"><div class="page-h"><p>Memuat tulisan…</p></div></div>';
+load().then(r=>{ARTICLES=r}).catch(()=>{LOADERR=true}).finally(()=>{setTicker();route()});
+addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;$('#bar').style.transform='scaleX('+(h>0?scrollY/h:0)+')'},{passive:true});
+</script>
+</body>
+</html>
