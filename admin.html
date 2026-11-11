@@ -6,7 +6,7 @@
 <title>Ruang tulis — writebyrani</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0}body{font:16px/1.55 'Archivo',Arial,sans-serif;background:#f4f4f2;color:#121212}
+*{box-sizing:border-box;margin:0}[hidden]{display:none!important}body{font:16px/1.55 'Archivo',Arial,sans-serif;background:#f4f4f2;color:#121212}
 .top{background:#121212;color:#fff;padding:0 22px;height:54px;display:flex;align-items:center;gap:14px}.top b{font-weight:900;font-size:1.2rem}.top b i{font-style:normal;background:#C8102E;padding:0 6px}.top span{opacity:.7;font-size:.9rem;margin-left:auto}
 button,.btn{font:800 .92rem 'Archivo',sans-serif;border:2px solid #121212;background:#fff;color:#121212;padding:9px 16px;cursor:pointer;transition:.2s;text-decoration:none;display:inline-block}
 button:hover,.btn:hover{background:#121212;color:#fff}.red{background:#C8102E;border-color:#C8102E;color:#fff}.red:hover{background:#9E0B22;border-color:#9E0B22}
@@ -86,7 +86,7 @@ async function save(status){const title=$('#title').value.trim();if(!title)retur
 function enter(){if(S){$('#who').textContent=S.user&&S.user.email||'';show('app');list()}else show('login')}
 if(!SUPABASE_URL||!SUPABASE_KEY){show('cfg')}else{
  enter();
- $('#go').onclick=async()=>{try{await auth({email:$('#em').value.trim(),password:$('#pw').value},'password');enter()}catch(e){msg('Email atau kata sandi salah')}};
+ $('#go').onclick=async()=>{try{await auth({email:$('#em').value.trim(),password:$('#pw').value},'password');enter()}catch(e){msg(/invalid login/i.test(e.message)?'Email atau kata sandi salah':(e.message||'Gagal masuk'))}};
  $('#pw').onkeydown=e=>{if(e.key==='Enter')$('#go').click()};
  $('#out').onclick=()=>{setS(null);blank();show('login')};$('#new').onclick=blank;$('#draft').onclick=()=>save('draft');$('#pub').onclick=()=>save('published');
  $('#list').onclick=e=>{const r=e.target.closest('.row');if(r)edit(r.dataset.id)};
